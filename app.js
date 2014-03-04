@@ -10,7 +10,7 @@ var express = require('express')
 // Use environment variables to configure oauth client.
 // That way, you never need to ship these values, or worry
 // about accidentally committing them
-var oauth2Client = new OAuth2Client"("544755778522-juv6hdrsoucr36ol4v3b24as95r1m196.apps.googleusercontent.com",
+var oauth2Client = new OAuth2Client("544755778522-juv6hdrsoucr36ol4v3b24as95r1m196.apps.googleusercontent.com",
     "yTqHaNkTNiYqTqy5gBkuJvwO", "http://acompanymirrorapi.herokuapp.com/oauth2callback");
 
 var app = express();
