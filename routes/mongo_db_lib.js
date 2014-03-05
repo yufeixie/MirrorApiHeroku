@@ -8,7 +8,7 @@ var db = mongoskin.db("mongodb://miten:starmix@troup.mongohq.com:10022/filmein",
 	});
 
 exports.getFilm = function (name, callback) {
-	var films = db.collecion('films');
+	var films = db.collection('films');
 	films.findOne({name: name}, callback);
 };
 

@@ -217,7 +217,7 @@ app.post('/location', function(req, res){
     res.end();
 });
 
-app.get('/api/getFilm', api.getFilm);
+app.get('/api/getFilm/:name', api.getFilm);
 app.get('/api/putFilm', api.putFilm);
 
 app.get('/api/getSubtitles', api.getSubtitles);
