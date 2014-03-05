@@ -149,6 +149,42 @@ var grabToken = function (code, errorCallback, successCallback) {
     });
 };
 
+// Srt string (with delimiters such as \n and \n\r) 
+// returns json array through callback
+var srtToJson = function (srt, callback) {
+    var subtitleData = [];
+
+    subGroups = srt.split("\n\r");
+    for(var i = 0; i < subGroups.length; i++) {
+        parts = subGroups[i].split("\n");
+        
+        count = parts[0];
+        
+        timings = parts[1].split(" ");
+        startTime = timings[0];
+        endTime = timings[2];
+        
+        var text = "";
+        for(var j = 2; j < parts.length; j++) {
+            text += parts[j];
+            if(j != parts.length - 1) {
+                text += "\n";
+            }
+        }
+        
+        var subtitleGroup = {
+            "count":count,
+            "start":startTime,
+            "endTime":endTime,
+            "text":text
+        };
+        
+        subtitleData.push(subtitleGroup);
+    }
+
+    callback(subtitleData);
+};
+
 app.get('/', function (req, res) {
     if (!oauth2Client.credentials) {
         // generates a url that allows offline access and asks permissions
