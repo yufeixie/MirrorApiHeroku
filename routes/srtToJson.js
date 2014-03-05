@@ -14,17 +14,6 @@ var makeFilmObject = function() {
     var cast3 = "Miten Mistry";
     var pic_url = "http://i.imgur.com/aYlJSrm.png";
 
-    // var film = {
-    //     "info": {
-    //         "rating":rating,
-    //         "year":year,
-    //         "cast": [cast1, cast2, cast3],
-    //         "pic_url":pic_url
-    //     },
-    //     "trivia":[]
-    // };
-    // return JSON.stringify(result);
-
     subtitleData = srtToJson(srtContents);
     var film = {
         "name": filmName,

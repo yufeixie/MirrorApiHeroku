@@ -20,15 +20,15 @@ exports.putFilm = function (req, res) {
 	//var film = req.body.film;
 	var film = srtToJson.makeFilmObject();
 	console.log("film created: " + JSON.stringify(film));
-	// mongo_db_lib.putFilm(film, function (err, result) {
-	// 	if (err) {
-	// 		console.log(JSON.stringify(err, null, 4));
-	// 		res.send(401);
-	// 		return;
-	// 	} else {
-	// 		res.json(result);
-	// 	}
-	// });
+	mongo_lib.putFilm(film, function (err, result) {
+		if (err) {
+			console.log(JSON.stringify(err, null, 4));
+			res.send(401);
+			return;
+		} else {
+			res.json(result);
+		}
+	});
 };
 
 exports.getSubtitles = function (req, res) {

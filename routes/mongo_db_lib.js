@@ -13,6 +13,6 @@ exports.getFilm = function (name, callback) {
 };
 
 exports.putFilm = function (film, callback) {
-	var fims = db.collection('films');
+	var films = db.collection('films');
 	films.insert(film, callback);
 };
