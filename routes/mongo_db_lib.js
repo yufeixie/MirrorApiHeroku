@@ -11,3 +11,8 @@ exports.getFilm = function (name, callback) {
 	var films = db.collecion('films');
 	films.findOne({name: name}, callback);
 };
+
+exports.putFilm = function (film, callback) {
+	var fims = db.collection('films');
+	films.insert(film, callback);
+};
