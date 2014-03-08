@@ -4,7 +4,7 @@ var mongo_lib = require('./mongo_db_lib');
 var srtToJson = require('./srtToJson');
 
 exports.getFilm = function (req, res) {
-	var name = req.body.name;
+	var name = req.params.name;
 	mongo_lib.getFilm(name, function (err, result) {
 		if (err) {
 			console.log(JSON.stringify(err, null, 4));
