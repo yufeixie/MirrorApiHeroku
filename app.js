@@ -17,7 +17,7 @@ var oauth2Client = new OAuth2Client("544755778522-juv6hdrsoucr36ol4v3b24as95r1m1
 var app = express();
 
 // all environments
-app.set('port', 8081);
+app.set('port', process.env.PORT || 8081);
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());

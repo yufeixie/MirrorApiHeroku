@@ -21,3 +21,4 @@ exports.getSubtitles = function (req, res) {
 		res.json({subtitles: result.subtitles});
 	});
 };
+
