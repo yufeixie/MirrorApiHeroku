@@ -5,7 +5,8 @@
 var express = require('express')
     , http = require('http')
     , googleapis = require('googleapis')
-    , OAuth2Client = googleapis.OAuth2Client;
+    , OAuth2Client = googleapis.OAuth2Client
+    , api = require('./routes/api');
 
 // Use environment variables to configure oauth client.
 // That way, you never need to ship these values, or worry
@@ -178,6 +179,8 @@ app.post('/location', function(req, res){
     console.log('location',req);
     res.end();
 });
+
+app.get('/api/getFilm', api.getFilm);
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
