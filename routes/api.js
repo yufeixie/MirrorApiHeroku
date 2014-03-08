@@ -5,6 +5,7 @@ var srtToJson = require('./srtToJson');
 
 exports.getFilm = function (req, res) {
 	var name = req.params.name;
+	console.log(req.params);
 	mongo_lib.getFilm(name, function (err, result) {
 		if (err) {
 			console.log(JSON.stringify(err, null, 4));
