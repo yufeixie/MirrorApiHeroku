@@ -175,12 +175,15 @@ app.post('/reply', function(req, res){
     console.log('replied',req);
     res.end();
 });
+
 app.post('/location', function(req, res){
     console.log('location',req);
     res.end();
 });
 
 app.get('/api/getFilm', api.getFilm);
+
+app.get('/api/getSubtitles', api.getSubtitles);
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));

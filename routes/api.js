@@ -10,7 +10,14 @@ exports.getFilm = function (req, res) {
 			res.send(401);
 			return;
 		} else {
-			res.send(200, result);
+			res.json(result);
 		}
 	});
-}
+};
+
+exports.getSubtitles = function (req, res) {
+	var name = req.body.name;
+	mongo_lib.getFilm(name, function (err, result) {
+		res.json({subtitles: result.subtitles});
+	});
+};
