@@ -18,6 +18,8 @@ var app = express();
 
 // all environments
 app.set('port', process.env.PORT || 8081);
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jade');
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
@@ -185,22 +187,30 @@ var srtToJson = function (srt, callback) {
     callback(subtitleData);
 };
 
-app.get('/', function (req, res) {
-    if (!oauth2Client.credentials) {
-        // generates a url that allows offline access and asks permissions
-        // for Mirror API scope.
-        var url = oauth2Client.generateAuthUrl({
-            access_type: 'offline',
-            scope: 'https://www.googleapis.com/auth/glass.timeline'
-        });
-        res.redirect(url);
-    } else {
-        gotToken();
-    }
-    res.write('Glass Mirror API with Node');
-    res.end();
+// app.get('/', function (req, res) {
+//     if (!oauth2Client.credentials) {
+//         // generates a url that allows offline access and asks permissions
+//         // for Mirror API scope.
+//         var url = oauth2Client.generateAuthUrl({
+//             access_type: 'offline',
+//             scope: 'https://www.googleapis.com/auth/glass.timeline'
+//         });
+//         res.redirect(url);
+//     } else {
+//         gotToken();
+//     }
+//     res.write('Glass Mirror API with Node');
+//     res.end();
 
+// });
+app.get('/', function (req, res) {
+    res.render('index');
 });
+
+app.get('/admin', function (req, res) {
+    res.render('admin');
+});
+
 app.get('/oauth2callback', function (req, res) {
     // if we're able to grab the token, redirect the user back to the main page
     grabToken(req.query.code, failure, function () {
