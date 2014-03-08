@@ -18,7 +18,7 @@ exports.getFilm = function (req, res) {
 
 exports.putFilm = function (req, res) {
 	//var film = req.body.film;
-	var film = srtToJson.makeFilmObject();
+	var film = srtToJson.makeFilmObject(req.body);
 	console.log("film created: " + JSON.stringify(film));
 	mongo_lib.putFilm(film, function (err, result) {
 		if (err) {
