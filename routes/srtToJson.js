@@ -19,7 +19,7 @@ var makeFilmObject = function(filmdata) {
     var desc = filmdata.desc;
     var subtitles = filmdata.subtitles;
 
-    subtitleData = srtToJson(srtContents);
+    subtitleData = srtToJson(subtitles);
     var film = {
         "name": filmName.toLowerCase(),
         "imdb_id":imdb_id,
