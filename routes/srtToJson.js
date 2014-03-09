@@ -49,7 +49,6 @@ var srtToJson = function (srt) {
         
         count = parts[0];
         
-        console.log("parts1: " + parts);
         timings = parts[1].split(" ");
         startTime = srtTimeToMilli(timings[0]);
         endTime = srtTimeToMilli(timings[2]);
@@ -78,9 +77,7 @@ var srtToJson = function (srt) {
 //00:01:02,125
 //hr:min:sec,ms
 var srtTimeToMilli = function (time) {
-    console.log("Time: "+ time);
     var parts = time.split(":");
-    console.log("parts" + parts);
     var subParts = parts[2].split(",");
     var hours = parts[0];
     var mins = parts[1];
@@ -88,15 +85,10 @@ var srtTimeToMilli = function (time) {
     var ms = subParts[1];
 
     var totalTime = 0;
-    console.log("hours: " + hours + " mins: " + mins + " secs: " + secs + " ms: " + ms);
     totalTime += hours * 3600000;
-    console.log("after hours: " + totalTime);
     totalTime += mins * 60000;
-    console.log("after mins: " + totalTime);
     totalTime += secs * 1000;
-    console.log("after secs: " + totalTime);
     totalTime += ms * 1;
-    console.log("after ms: " + totalTime);
 
     return totalTime;
 };

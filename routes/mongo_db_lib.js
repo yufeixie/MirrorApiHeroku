@@ -14,5 +14,5 @@ exports.getFilm = function (name, callback) {
 
 exports.putFilm = function (film, callback) {
 	var films = db.collection('films');
-	//films.insert(film, callback);
+	films.insert(film, callback);
 };
