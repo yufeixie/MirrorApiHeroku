@@ -19,7 +19,7 @@ var makeFilmObject = function(filmdata) {
     var desc = filmdata.desc;
     var subtitles = filmdata.subtitles;
 
-    subtitleData = srtToJson(subtitles);
+    subtitleData = srtToJson(srtContents);
     var film = {
         "name": filmName.toLowerCase(),
         "imdb_id":imdb_id,
@@ -51,8 +51,8 @@ var srtToJson = function (srt) {
         count = parts[0];
         
         timings = parts[1].split(" ");
-        startTime = timings[0];
-        endTime = timings[2];
+        startTime = srtTimeToMilli(timings[0]);
+        endTime = srtTimeToMilli(timings[2]);
         
         var text = "";
         for(var j = 2; j < parts.length; j++) {
@@ -75,6 +75,24 @@ var srtToJson = function (srt) {
     return subtitleData;
 };
 
+//00:01:02,125
+//hr:min:sec,ms
+var srtTimeToMilli = function (time) {
+    var parts = time.split(":");
+    var subParts = parts[2].split(",");
+    var hours = parts[0];
+    var mins = parts[1];
+    var secs = subParts[0];
+    var ms = subParts[1];
+
+    var totalTime = 0;
+    totalTime += hours * 3600000;
+    totalTime += mins * 60000;
+    totalTime += secs * 1000;
+    totalTime += ms * 1;
+
+    return totalTime;
+};
 
 
 exports.makeFilmObject = makeFilmObject;
